@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Continuous Integration &amp; Deployment</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20100610" />
+<meta name="author" content="Peter Zsoldos" />
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="s5/i18n/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="s5/i18n/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="s5/i18n/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="s5/i18n/opera.css" type="text/css" media="projection" id="operaFix" />
+<style type="text/css">
+<!--
+div.cartoon a img {
+	display: block;
+	margin: auto;
+	height : 90%;
+}
+div.cartoon a {
+	display: block;
+	margin: auto;
+	text-decoration: none;
+}
+
+// -->
+</style>
+<!-- S5 JS -->
+<script src="s5/slides.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+	<h1>&nbsp;</h1>
+<h2>Continuous Integration &amp; Deployment</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+	<div class="slide">
+		<a href="http://commons.wikimedia.org/wiki/File:Paul_Scheerbart_-_Perpetuum_mobile_(1910).png"><img style="float: right; margin-top: 4em;"  src="pres/perpetuum-mobile.png" alt="Perpetuum Mobile" title="from wikimedia" /></a>
+	<h1>Continuous Integration &amp; Deployment</h1>
+<p style="font-size: 50%">Peter Zsoldos <br />
+(<a href="http://twitter.com/zsepi">@zsepi</a>, <a href="http://zsoldosp.blogspot.com">http://zsoldosp.blogspot.com</a>, peter dot zsoldos at gmail dot com)<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a>.</p>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://en.wikipedia.org/wiki/File:Tiktaalik_roseae_life_restor.jpg"><img src="pres/tiktaalik.jpg" alt="a tiktaalik - fish adapting to land life" title="from wikipedia" /></a>
+	<div class="handout">
+		The presentation is an evolutionary narrative of going from manual a full manual process to attempting a releas to production from every commit.
+	</div>
+</div>
+
+<div class="slide cartoon">
+		<a href="http://www.codinghorror.com/blog/2007/03/the-works-on-my-machine-certification-program.html"><img src="pres/works-on-my-machine.png" alt="works on my machine" title="image from the coding horror blog"/></a>
+	<div class="handout">
+		We need reproducable builds and predictably working software...
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://www.flickr.com/photos/chrisjohnbeckett/514914659/"><img src="pres/magnifying-glass.jpg" alt="magnifying glass" title="from flickr" /></a>
+	<div class="handout">
+		<h1>What could be the causes?</h1>
+		<ul>
+			<li>I forgot to check in that file...</li>
+			<li>I forgot to check in that dependency...</li>
+			<li>Oh, I've ugraded the X library...</li>
+			<li>I've changed the API...</li>
+			<li>You need to update the configuration in [file, registry, environment variable, ...]</li>
+		<li>...</li>
+	</ul>
+	There must be a solution to this...
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://commons.wikimedia.org/wiki/File:1_1_54b.png"><img src="pres/warning.png" alt="Warning" title="from wikimedia" /></a>
+	<div class="handout">
+		<ul>
+			<li>We should be notified of problems</li>
+			<li>Early if possible</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="slide cartoon">
+	<a href="http://www.flickr.com/photos/61057813@N00/153001143/"><img src="pres/towel-day.jpg" alt="Towel day" title="from flickr" /></a>
+	<div class="handout">
+		<h1>Prerequisites</h1>
+		<ul>
+			<li>Some kind of version control software (<a href="http://subversion.tigris.org/">SVN</a>, <a href="http://git-scm.com/">git</a>, etc.) </li>
+			<li>All dependencies should be tracked</li>
+		</ul>	
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="#"><img src="pres/cmdprompt.png" alt="windows xp command prompt" title="screenshot from my machine" /></a>
+	<div class="handout">
+		We should be able to build outside of the IDE of choice
+	</div>
+</div>
+
+<div class="slide">
+	<div style="margin-top: 20%">
+	<a href="http://openphoto.net/gallery/image.html?image_id=7628" style="display:block; float: left"><img src="pres/fresh-bread.jpg" title="from openphoto.net" alt="fresh bread" style="display:block" /></a>
+	<a href="http://www.flickr.com/photos/schneertz/679692806/" style="display:block; float: left"><img src="pres/workflow.jpg" title="from flickr" alt="workflow" style="display:block" /></a>
+	<a href="http://www.flickr.com/photos/funtik/1175522045/" style="display:block; float: left"><img src="pres/msg-in-bottle.jpg" title="from flickr" alt="message in a bottle" style="display:block" /></a>
+	</div>
+	<div class="handout">
+		The daily (nightly) build
+		<ul>
+			<li>Get the latest version of the software</li>
+			<li>Perform the pre defined steps (build, test, etc.)</li>
+			<li>Notify interested parties of the results</li>
+		</ul>
+	</div>
+</div>
+<div class="slide cartoon">
+	<a href="http://commons.wikimedia.org/wiki/File:Boy-with-binoculars.png"><img src="pres/binoculars.png" alt="Boy with binoculars" title="from wikimedia" /></a>
+	<div class="handout">
+	<h1>Continuous Integration (nightlyBuild++)</h1>
+	<ol>
+		<li>It watches the source control before kicking of the build</li>
+		<li>Could be configured to prevent broken code from getting into the VCS</li>
+	</ol>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://xkcd.com/303/"><img src="pres/xkcd-compiling.png" alt="The #1 programmer excuse for legitimately slacking off: my code is compiling" title="from xkcd.com"/></a>
+	<div class="handout">
+	The build should be fast - at most a coffee break long
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://commons.wikimedia.org/wiki/File:The_three_monkeys.png"><img src="pres/3monkeys.png" alt="The three monkeys - see not, hear not, say not" title="from wikimedia"/></a>
+	<div class="handout">
+	There is no point in feedback if we are not going to act on it
+	</div>
+</div>
+
+<div class="slide">
+	<p style="font-size: 170%; text-align: center; darkblue; font-weight: bold">code coverage, mutation testing, static code analysis, coding standards enforcement, document generation, multi platform build, building on dependency's source code change, acceptance testing, trend comparison, xDepend, ...</p>
+	<div class="handout">
+		<h1>Beyond compiling &amp; unit testing</h1>
+		Just some of the things you can add to your build. Also, most CI systems make it easy to track the trends of these metrics
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://www.flickr.com/photos/cwest666/1458716901/"><img src="pres/ctrl-c-ctrl-v.jpg" alt="CTRL+C, CTRL+V" title="from flickr"/></a>
+	<div class="handout">
+		The bad old days of manual releasing, editing config files on the server - brrr! Thanks those days are gone!
+	</div>
+</div>
+<div class="slide cartoon">
+	<a href="http://www.flickr.com/photos/harry_nl/3030267182/"><img src="pres/assembly-line.jpg" alt="assembly line" title="from flickr" /></a>
+	<div class="handout">
+		<h1>Build promotion</h1>
+		the case is the same as with the build automation 
+		<ul>
+			<li>no need to rebuild the system</li>
+			<li>discover the steps</li>
+			<li>automate them</li>
+			<li>put proper control in place</li>
+		</ul>
+		Note: you don't have to automatically release to production
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://www.flickr.com/photos/19429588@N00/333624139/"><img src="pres/guard.jpg" title="from flickr" alt="palace guard in stockholm" /></a>
+	<div class="handout">
+		Now we have some checks in place, which can decide whether or not a build meets a certain quality
+	</div>
+</div>
+
+<div class="slide cartoon">
+	<a href="http://geekandpoke.typepad.com/geekandpoke/2010/05/how-to-become-invaluable.html"><img src="pres/build-script-guy.png" alt="CTRL+C, CTRL+V" title="with emailed permission of the author"/></a>
+	</div>
+</div>
+<div class="slide">
+	<h1>Q &amp; A</h1>
+	<div class="handout">
+		<h2>Some useful links</h2>
+		<ul>
+			<li><a href="http://martinfowler.com/articles/continuousIntegration.html">Martin Fowler's blog</a></li>
+			<li><a href="http://www.extremeprogramming.org/rules/integrateoften.html">ExtremeProgramming.org</a></li>
+			<li><a href="http://c2.com/cgi/wiki?ContinuousIntegration">C2 wiki</a></li>
+			<li><a href="http://continuousdelivery.com/">Continuous Delivery</a></li>
+		</ul>
+		<h2>Some experience reports</h2>
+		<ul>
+			<li><a href="http://timothyfitz.wordpress.com/2009/02/10/continuous-deployment-at-imvu-doing-the-impossible-fifty-times-a-day/">IMVU</a></li>
+			<li><a href="http://www.infoq.com/presentations/Facebook-Moving-Fast-at-Scale">C.D. at Facebook</a></li>
+			<li><a href="http://www.hanselman.com/blog/HanselminutesPodcast230ContinuousDeploymentWithJonT%C3%B8rresdal.aspx">Hanselminutes Podcast 230 - Continuous Deployment with Jon Torresdal</a></li>
+		</ul>
+	</div>
+
+</div>
+</div>
+
+</body>
+</html>
