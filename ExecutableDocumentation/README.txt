@@ -9,10 +9,6 @@ dokumentációk - sajnos - jelentős része is gyorsan elavulttá, s így
 használhatatlanná válik. Minielőadásomban pár példát mutatok be, ahol sikerült
 élővé varázsolni word doksikat.
 
-
-
-mailgroups - have one for the team, but one per product
-application transfer
-alkalmazás - inline help, ahol persze van "kérdésem van, flag inappropriate"
-link is
-actionable monitoring
+Living Documentation
+--------------------
+based on my older blog article http://zsoldosp.blogspot.com/2010/08/executable-documentation.html
