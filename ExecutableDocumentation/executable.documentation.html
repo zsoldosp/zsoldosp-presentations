@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Executable Documentation</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20100610" />
+<meta name="author" content="Peter Zsoldos" />
+<meta name="company" content="n/a" />
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8">
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="s5/i18n/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="s5/i18n/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="s5/i18n/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="s5/i18n/opera.css" type="text/css" media="projection" id="operaFix" />
+<style>
+    td { 
+        padding: 1em;
+    }
+    </style>
+<!-- S5 JS -->
+<script src="s5/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+	<h1><a href="http://www.meetup.com/AgileHungary/">Agile Hungary Meetup , 2011-09-08</a></h1>
+<h2>Executable Documentation</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+<h1>Executable Documentation</h1>
+<h3>Peter Zsoldos</h3>
+<h4>twitter: <a href="http://twitter.com/zsepi">@zsepi</a><br />
+    email: peter dot zsoldos at gmail dot com<br />
+    blog: <a href="http://zsoldosp.blogspot.com/">zsoldosp.blogspot.com</a><br />
+    slides: <a href="http://github.com/zsoldosp/presentations">github.com/zsoldosp/presentations</a> <br />
+    <small><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a></small>
+</h4>
+</div>
+
+<div class="slide">
+    <h1>Why documentation? Why you?</h1>
+    <ul>
+        <li>Agile is all about documentation, isn't it?</li>
+        <li>Aren't you a developer?</li>
+    </ul>
+    <div class="handout">
+    <h1>What's the problem with documentation?</h1>
+    <p>No need to put bullets here, I'm sure we can collect some examples</p>
+        <ul>
+            <li>I'm a developer</li>
+            <li>who has worked on legacy systems in the enterprise</li>
+            <li>thus I learned to overcome my dislike towards writing documentation</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>What we already have</h1>
+    <table>
+        <tr>
+            <td>
+                <a href="http://www.flickr.com/photos/vilseskogen/5655754675/sizes/m/in/photostream/" title="Attribution-NonCommercial-ShareAlike License"><img width="300" height="225" src="notapipe.jpg"></a>
+            </td>
+            <td>
+    <h2>Acceptance Testing Tools</h2>
+    <p>FitNesse, Cucumber, Concordion, StoryTeller, RSpec, <strong>SpecFlow</strong>, ...</p>
+    <h2>Configuration Management</h2>
+    <p>Chef, Puppet, ...</p>
+            </td>
+        </tr>
+    </table>
+    <div class="handout">
+    <p>Shoemaker's shoes syndrome</p>
+        <p>So I won't be talking a lot about these</p>
+        <ul>
+            <li>we have Gaspar here to talk about SpecFlow</li>
+            <li>lack of time: haven't been able to check CM tools out</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>Agenda: Examples</h1>
+    <ul>
+        <li>New developer/user setup</li>
+        <li>Access revocation</li>
+        <li>Fixlogs</li>
+        <li>UX: End user help</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>New developer, hosed system</h1>
+    <ul>
+        <li>assuming there is documentation</li>
+        <li>Ask Joe for licenses.. And Sarah for that one... And yeah, we are not using that anymore...</li>
+        <li>You need to set up these host aliases, and these additional ones when you are working from another network... Oh, and that' .13, not .12!</li>
+        <li>File shares, databases, issue trackers </li>
+        <li>To run the app, you need to start these services in order...</li>
+    </ul>
+    <div class="handout">
+        <li>Using VMs for development - but not good for version control :)</li>
+    </div>
+</div>
+<div class="slide">
+    <h1>Similar?</h1>
+    <table>
+        <tr>
+            <td>install python 2.7</td>
+            <td>sudo apt-get install python</td>
+        </tr>
+        <tr>
+            <td>download the iso country codes</td>
+            <td>wget http://iso.com/3166-1.txt # this link is not real :)</td>
+        </tr>
+    </table>
+</div>
+<div class="slide">
+    <h2>Almost perfect</h2>
+    <table>
+        <tr>
+            <td>
+                <ol>
+                    <li>install python 2.7</li>
+                    <li>download iso codes</li>
+                    <li>email Joe for DB access</li>
+                    <li>...</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>svn co ....newdeveloper.sh</li>
+                    <li>chmod 755 newdeveloper.sh; ./newdeveloper.sh</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    <p><strong>Documentation</strong> is primarily <strong>for people to read</strong>, machines can parse binary as well</p>
+</div>
+<div class="slide">
+    <h1>API design example: Host aliases</h1>
+    <pre><code>
+#!/bin/bash
+HOSTS=/etc/hosts
+function add_to_hosts() {
+        (grep $2 $HOSTS &gt; /dev/null) || \
+            (echo "$1	$2" | \
+                sudo tee -a $HOSTS &gt; /dev/null )
+}
+add_to_hosts 127.0.0.1 dev.site.com
+add_to_hosts 10.0.1.106 dev.database.com 
+    </code></pre>
+    <div class="handout">
+        but you can write it in whatever you want - perl, python, c#, haskell, ...
+        twist the API a bit - I don't insist on fluent interfaces/full English in code, but in these examples, yes, make them as English as possible
+    </div>
+</div>
+<div class="slide">
+    <h2>D.R.Y.</h2>
+    <ul>
+        <li>.. raw:: html<br>&nbsp;&nbsp;&nbsp;:file: ../../bin/newdeveloper.sh</li>
+        <li>&lt;pre&gt;&lt;?php include('../../bin/newdeveloper.sh'); ?&gt;&lt;/pre&gt;</li>
+        <li>parse, generate, etc.</li>
+    </ul>
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+    <h1>Former developer: system access</h1>
+    <ul>
+        <li>internal mobility in a regulated environmnet</li>
+        <li>external mobility</li>
+        <li>application ownership transfer</li>
+    </ul>
+    <div class="handout">
+        <li>compliance reporting - the company spun off that business, so can't use that system anymore.</li>
+    <h1>Example: Painless application transfer</h1>
+    <ul>
+        <li>script generated from existing permissions (cloned)</li>
+        <li>diff</li>
+        <li>can be used to regularly check for deviations</li>
+    </ul>
+    </div>
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+    <h1>Fixlogs</h1>
+    <ul>
+        <li>Crash, Outage, End of the World (be sure to checkout the restaurant!)</li>
+        <li>Troubleshooting while on a teleconference at 3 AM :)</li>
+        <li>Raw notes</li>
+        <li>sleep</li>
+        <li>Root Cause Analysis, actionable resolution</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Scenario 1: Escalate to level 3</h1>
+    <ul>
+        <li>raw notes: when this is in the logfile, call L3</li>
+        <li>sleep deprived developer copypaste <strike>mistakes</strike> resolution</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Scenario 2: Give fixlogs to operation personnel</h1>
+    <ul>
+        <li>raw notes: when this is in the logfile, execute the below sql but replace blah blah Lorem Ipsum Dolorem </li>
+        <li><strike>sleep deprived developer</strike> Awake operations personnel copypaste <strike>mistakes</strike> resolution</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Level 3: Script it</h1>
+    <ul>
+        <li>translate raw notes to parameterized scripts</li>
+        <li>works, and it's just a script, so good enough</li>
+        <li>Manual/monitoring kicks it off automatically</li>
+    </ul>
+    <div class="handout">
+        <ul>
+            <li>test with upstream</li>
+            <li>at least know when they change something</li>
+        </ul>
+    </div>
+</div>
+<div class="slide">
+    <h1>Level 4: Encapsulate it in the program</h1>
+    <ul>
+        <li>fixed at the root</li>
+        <li>turns into business exceptions instead of operational exceptions</li>
+        <li>self healing</li>
+    </ul>
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+    <h1>UX: End user help</h1>
+    <ul>
+        <li>Typical Windows/Google KB article:
+            <ul>
+                <li>Start Menu
+                <li>Programs
+                <li>click
+                <li>...
+            </ul>
+            just let me click here, and maybe ask for confirmation!</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Specification in the UI</h1>
+</div>
+<div class="slide">
+    <h1>Questions</h1>
+    <ul>
+        <li>Is this perfect? No.</li>
+    </ul>
+</div>
+<!--
+<div class="slide">
+</div>
+-->
+</div>
+</body>
+</html>
